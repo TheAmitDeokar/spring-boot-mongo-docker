@@ -33,15 +33,17 @@ node{
     }
     
     // Deploy App as Docker Container in Docker Deployment server
-  //   stage('Deploy App as Docker Container in Docker Deployment server'){
-  //      sshagent(['ubuntudeploymentserver']) {
+     stage('Deploy App as Docker Container in Docker Deployment server'){
+        sshagent(['ubuntudeploymentserver']) {
 
-   //       sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.43.211 docker rm -f springbootappcontainer || true"
+          sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.43.211 docker rm -f springbootappcontainer || true"
 
-    //      sh "aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 686255940829.dkr.ecr.ap-south-1.amazonaws.com" 
+          sh "aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 686255940829.dkr.ecr.ap-south-1.amazonaws.com" 
+          // mongo db as a container
+          sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.43.211 docker run -d --name mongo -e MONGO_INITDB_ROOT_USERNAME:root -e MONGO_INITDB_ROOT_PASSWORD:passw0rd mongo"
 
-  //       sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.43.211 docker run -d --name springbootappcontainer --network customebridgenetwork -p 8081:8080 686255940829.dkr.ecr.ap-south-1.amazonaws.com/spring-boot-mongo-docker:${buildNumber}"  
-  //  }
-   //  }
+         // sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.43.211 docker run -d --name springbootappcontainer --network customebridgenetwork -p 8081:8080 686255940829.dkr.ecr.ap-south-1.amazonaws.com/spring-boot-mongo-docker:${buildNumber}"  
+    }
+     }
 
 }
