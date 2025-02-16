@@ -37,7 +37,8 @@ node{
         sshagent(['ubuntudeploymentserver']) {
 
           sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.43.211 docker rm -f springbootappcontainer || true"
-
+          sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.43.211 docker rm -f mongo || true"
+          
           sh "aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 686255940829.dkr.ecr.ap-south-1.amazonaws.com" 
           // mongo db as a container
           sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.43.211 docker run -d --name mongo -e MONGO_INITDB_ROOT_USERNAME:root -e MONGO_INITDB_ROOT_PASSWORD:passw0rd mongo"
