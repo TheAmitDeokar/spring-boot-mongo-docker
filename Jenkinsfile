@@ -14,7 +14,7 @@ node{
         git branch: 'master', credentialsId: 'GithubCred', url: 'https://github.com/TheAmitDeokar/spring-boot-mongo-docker.git'
     }
     
-    // Build stagee
+    // Build stage
    	stage('Build app package'){
 	sh "$mavenHome/bin/mvn clean package"
          }
