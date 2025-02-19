@@ -41,7 +41,7 @@ node{
           
           sh "aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 686255940829.dkr.ecr.ap-south-1.amazonaws.com" 
           // mongo db as a container
-          sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.43.211 docker run -d --name mongo --network springbridgenetwork -e MONGO_INITDB_ROOT_USERNAME:root  -e MONGO_INITDB_ROOT_PASSWORD:passw0rd -v /home/ubuntu/mongodata:/data/db mongo"
+          sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.43.211 docker run -d --name mongo --network springbridgenetwork -e MONGO_INITDB_ROOT_USERNAME:root  -e MONGO_INITDB_ROOT_PASSWORD:passw0rd -v mongoval:/data/db mongo"
 
           sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.43.211 docker run -d --name springbootappcontainer -p 8082:8080 -e MONGO_DB_HOSTNAME:mongo -e MONGO_DB_USERNAME:mongo -e MONGO_DB_PASSWORD:passw0rd --network springbridgenetwork 686255940829.dkr.ecr.ap-south-1.amazonaws.com/spring-boot-mongo-docker:${buildNumber}"
   
