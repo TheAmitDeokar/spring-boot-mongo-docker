@@ -32,7 +32,7 @@ node{
    sh "docker push 686255940829.dkr.ecr.ap-south-1.amazonaws.com/spring-boot-mongo-docker:${buildNumber}"
     }
     
-    // Deploy App as Docker Container in Docker Deployment server
+    // Deloy App as Docker Container in Docker Deployment server
      stage('Deploy App as Docker Container in Docker Deployment server'){
         sshagent(['ubuntudeploymentserver']) {
 
