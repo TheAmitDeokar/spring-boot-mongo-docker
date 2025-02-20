@@ -40,7 +40,7 @@ node{
 
      // Remove docker image from jenkins server
      stage('Remove Docker image'){
-        sh "ssh -o StrictHostKeyChecking=no ubuntu@35.154.15.221"
+        sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.40.86"
         sh "docker rmi -f 686255940829.dkr.ecr.ap-south-1.amazonaws.com/spring-boot-mongo-docker"
     }
 
