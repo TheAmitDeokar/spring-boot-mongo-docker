@@ -45,6 +45,8 @@ node{
           //sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.43.211 docker rm -f springbootappcontainer || true"
           // sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.43.211 docker rm -f mongo || true"
           
+          sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.43.211 'docker-compose down'"
+          
           sh "aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 686255940829.dkr.ecr.ap-south-1.amazonaws.com" 
           
           sh "scp -o StrictHostKeyChecking=no docker-compose.yml ubuntu@172.31.43.211:"
