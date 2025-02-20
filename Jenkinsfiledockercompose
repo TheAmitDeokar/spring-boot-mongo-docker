@@ -40,9 +40,11 @@ node{
 
      // Remove docker image from jenkins server
      stage('Remove Docker image'){
+        sshagent(['JenkinsServerCred']) {
         sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.40.86"
         sh "docker rmi -f 686255940829.dkr.ecr.ap-south-1.amazonaws.com/spring-boot-mongo-docker"
-    }
+      }
+     }
 
     // Deloy App as Docker Container in Docker Deployment server
      stage('Deploy App as Docker Container in Docker Deployment server'){
