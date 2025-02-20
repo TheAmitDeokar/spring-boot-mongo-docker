@@ -31,6 +31,11 @@ node{
 
    sh "docker push 686255940829.dkr.ecr.ap-south-1.amazonaws.com/spring-boot-mongo-docker:${buildNumber}"
     }
+
+    //Remove local image from Jenkins Server
+     stage('Remove local image from Jenkins Server'){
+        sh "docker rmi $(docker images -q)"
+     }
    
     // Update Docker image Tag
     stage('Update Docker image Tag'){
