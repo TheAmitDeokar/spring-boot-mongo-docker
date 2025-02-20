@@ -34,7 +34,7 @@ node{
    
     // Update Docker image Tag
     stage('Update Docker image Tag'){
-     sh "sed -i "s/VERSION/$BUILD_NUMBER/" docker-compose.yml"
+     sh "sed -i 's/VERSION/$BUILD_NUMBER/' docker-compose.yml"
      }
     
     // Deloy App as Docker Container in Docker Deployment server
