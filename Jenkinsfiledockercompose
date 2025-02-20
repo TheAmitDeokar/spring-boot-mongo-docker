@@ -42,7 +42,7 @@ node{
      stage('Remove Docker image'){
         sshagent(['JenkinsServerCred']) {
         sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.40.86"
-        sh "docker rmi $(docker images -q)"
+        sh "docker rmi \$(docker images -q)"
       }
      }
 
