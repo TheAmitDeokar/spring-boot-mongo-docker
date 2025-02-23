@@ -69,7 +69,7 @@ node{
           
           sh "scp -o StrictHostKeyChecking=no docker-compose.yml ubuntu@172.31.43.211:"
 
-          sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.43.211 docker stack deploy --compose-file docker-compose.yml springapp"
+          sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.43.211 docker stack deploy --compose-file docker-compose.yml --with-registry-auth springapp"
           
     }
      }
