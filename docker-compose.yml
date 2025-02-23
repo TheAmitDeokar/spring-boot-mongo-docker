@@ -35,6 +35,10 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=devdb1234 
     networks:
     - springappbridge
+    deploy:  # This will be considered only in docker swarm.
+      placement:
+        constraints: 
+         - node.labels.name==workerone
     
 volumes:
   mongovolu: 
