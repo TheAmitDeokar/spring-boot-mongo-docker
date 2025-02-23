@@ -57,7 +57,7 @@ node{
         // Pull image from ECR to all nodes  
           sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.43.211 docker pull 686255940829.dkr.ecr.ap-south-1.amazonaws.com/spring-boot-mongo-docker:${buildNumber}"
           sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.45.151 docker pull 686255940829.dkr.ecr.ap-south-1.amazonaws.com/spring-boot-mongo-docker:${buildNumber}"
-          sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.36.183 docker pull 686255940829.dkr.ecr.ap-south-1.amazonaws.com/spring-boot-mongo-docker${buildNumber}"
+          sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.36.183 docker pull 686255940829.dkr.ecr.ap-south-1.amazonaws.com/spring-boot-mongo-docker:${buildNumber}"
 
           
        //   sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.43.211 'docker-compose down'"
