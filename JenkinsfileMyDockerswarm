@@ -49,6 +49,9 @@ node{
      stage('Deploy App as Docker Container in Docker Deployment server'){
         sshagent(['ubuntudeploymentserver']) {
 
+      // Remove old stack service from master node
+         sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.43.211 docker stack rm springapp || true"
+
         // Remove old images from all nodes 
           sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.43.211 'docker rmi \$(docker images -q)' || true"
           sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.45.151 'docker rmi \$(docker images -q)' || true"
