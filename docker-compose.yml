@@ -2,15 +2,27 @@ version: "3"
 services:
   springapp:
     image: 686255940829.dkr.ecr.ap-south-1.amazonaws.com/spring-boot-mongo-docker:VERSION
-    ports:
-    - 8080:8080
-    networks:
-    - springappbridge
     environment:
       - MONGO-BD-HOSTNAME:MONGO
       - MONGO-DB-USERNAME:devdb
       - MONGO-DB-PASSWORD:devdb@123
-
+    ports:
+    - 8080:8080
+    working_dir: /opt/app
+    depends_on:
+      - mongo
+    networks:
+    - springappbridge
+    deploy:  # This will be considered only in docker swarm.
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 20s
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 5
+    
   mongo:
     image: mongo
     volumes:
@@ -23,6 +35,9 @@ services:
 
 volumes:
   mongovolu: 
+    external: true
+
 networks:
   springappbridge:
+    external: true
    
