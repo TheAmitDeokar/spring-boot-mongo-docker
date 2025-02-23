@@ -14,7 +14,7 @@ services:
     networks:
     - springappbridge
     deploy:  # This will be considered only in docker swarm.
-      replicas: 2
+      replicas: 1
       update_config:
         parallelism: 1
         delay: 20s
