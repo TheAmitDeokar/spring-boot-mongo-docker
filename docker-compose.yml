@@ -16,7 +16,7 @@ services:
     deploy:  # This will be considered only in docker swarm.
       placement:
         constraints: 
-         - node.labels.name==workerone
+         - node.labels.name==workerapp
       replicas: 2
       update_config:
         parallelism: 1
@@ -38,7 +38,7 @@ services:
     deploy:  # This will be considered only in docker swarm.
       placement:
         constraints: 
-         - node.labels.name==workerone
+         - node.labels.name==workerdb
     
 volumes:
   mongovolu: 
