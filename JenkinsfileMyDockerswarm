@@ -38,12 +38,12 @@ node{
      }
 
      // Remove docker image from jenkins server
-     stage('Remove Docker image'){
-        sshagent(['JenkinsServerCred']) {
-        sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.40.86"
-        sh "docker rmi \$(docker images -q)"
-      }
-     }
+   //  stage('Remove Docker image'){
+    //    sshagent(['JenkinsServerCred']) {
+    //    sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.40.86"
+    //    sh "docker rmi \$(docker images -q)"
+    //  }
+   //  }
 
     // Deloy App as Docker Container in Docker Deployment server
      stage('Deploy App as Docker Container in Docker Deployment server'){
